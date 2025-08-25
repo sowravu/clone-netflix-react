@@ -18,7 +18,7 @@ function Player() {
     method: 'GET',
     headers: {
       accept: 'application/json',
- Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlN2YzZWIxNDdiYjljOTc2ZTEwZWNhYmViZmM4Y2Y0ZCIsIm5iZiI6MTc1NDUzODE5Ni43OTcsInN1YiI6IjY4OTQyMGQ0N2I0ZGYyYjA0YjA3YzNjMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.hNjzfPpjFoN8GecvPrF-82V5HondLy34fQqAvSlHOdw'    }
+  Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`    }
   };
 
   useEffect(() => {

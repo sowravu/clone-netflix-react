@@ -1,7 +1,7 @@
 import  { useEffect, useState } from 'react';
 import back_arrow_icon from '../../assets/back_arrow_icon.png';
 import { useNavigate, useParams } from 'react-router-dom';
-
+import axios from 'axios';
 function Player() {
 
   const {id} = useParams();
@@ -21,22 +21,24 @@ function Player() {
   Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`    }
   };
 
-  useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options)
-    .then(response => response.json())
-    .then(data => {
-      const trailer = data.results.find(
-        (video) => video.type === "Trailer" && video.site === "YouTube"
-      );
-      if(trailer) {
-        setApiData(trailer);
-      } else {
-        setApiData(null)
-      }
-    })
-    .catch(err => console.error(err), setApiData(null));
-  }, [id])
-  
+useEffect(() => {
+    axios
+      .get(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options)
+      .then((response) => {
+        const trailer = response.data.results.find(
+          (video) => video.type === "Trailer" && video.site === "YouTube"
+        );
+        if (trailer) {
+          setApiData(trailer);
+        } else {
+          setApiData(null);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setApiData(null);
+      });
+  }, [id]);
 
 
   return (

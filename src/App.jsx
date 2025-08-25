@@ -7,6 +7,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
 import { ToastContainer, toast } from 'react-toastify';
 
+
 function App() {
 
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ function App() {
         <Route path='/player/:id' element={<Player/>}/>
       </Routes>
     </div>
+  
   )
 }
 

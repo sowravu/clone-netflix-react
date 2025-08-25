@@ -10,8 +10,6 @@ function TitleCards({title, category}) {
 
 
 
-
-
   const options = {
   method: 'GET',
   headers: {
